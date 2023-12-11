@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # monitoringdesa_app
 
 A new Flutter project.
@@ -23,6 +22,3 @@ Monitoring Desa Pendarungan A platform used by the Pendarungan Village in Banyuw
 - Flutter
 - Postgresql
 - Prisma
-
-  
->>>>>>> 7d24a1fc0c3230ee90d494c16af870a7d5eb39ce
