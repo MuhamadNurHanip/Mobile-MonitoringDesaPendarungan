@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # monitoringdesa_app
 
 A new Flutter project.
@@ -14,3 +15,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Mobile-MonitoringDesaPendarungan
+Monitoring Desa Pendarungan A platform used by the Pendarungan Village in Banyuwangi, East Java to manage the Work Program in Pendarungan Village. Made by Muhamad Nur Hanif 😊
+
+## Requirenment Environment
+- Flutter
+- Postgresql
+- Prisma
+
+  
+>>>>>>> 7d24a1fc0c3230ee90d494c16af870a7d5eb39ce
