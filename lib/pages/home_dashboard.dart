@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
 import 'package:monitoringdesa_app/pages/login_page.dart';
 import 'package:monitoringdesa_app/pages/programkerja.dart';
+import 'package:monitoringdesa_app/pages/progress.dart';
+import 'package:monitoringdesa_app/pages/report.dart';
+import 'package:monitoringdesa_app/pages/sumberdana.dart';
 import 'package:monitoringdesa_app/widgets/BottomNavigationBar.dart';
 // import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -603,7 +606,25 @@ class _HomeDashboardState extends State<HomeDashboard> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => proker()));
                 },
-                child: Text('Redirect')),
+                child: Text('Proker')),
+                ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => progress()));
+                },
+                child: Text('Progress')),
+                ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => report()));
+                },
+                child: Text('report')),
+                ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => sumberdana()));
+                },
+                child: Text('sumberdana')),
           ],
         ),
       ),
