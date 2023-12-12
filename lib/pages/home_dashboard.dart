@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
-import 'package:monitoringdesa_app/pages/login_page.dart';
-import 'package:monitoringdesa_app/pages/programkerja.dart';
-import 'package:monitoringdesa_app/pages/progress.dart';
-import 'package:monitoringdesa_app/pages/report.dart';
-import 'package:monitoringdesa_app/pages/sumberdana.dart';
-import 'package:monitoringdesa_app/widgets/BottomNavigationBar.dart';
-// import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-// ... your existing imports
 
 class HomeDashboard extends StatefulWidget {
   const HomeDashboard({Key? key}) : super(key: key);
@@ -18,15 +10,14 @@ class HomeDashboard extends StatefulWidget {
 }
 
 class _HomeDashboardState extends State<HomeDashboard> {
-  int _currentIndex = 0;
+  // int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+    return Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          
           children: [
             tittle(), // Navbar atas
 
@@ -601,53 +592,52 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 ),
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => proker()));
-                },
-                child: Text('Proker')),
-                ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => progress()));
-                },
-                child: Text('Progress')),
-                ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => report()));
-                },
-                child: Text('report')),
-                ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => sumberdana()));
-                },
-                child: Text('sumberdana')),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => proker()));
+            //     },
+            //     child: Text('Proker')),
+            //     ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => progress()));
+            //     },
+            //     child: Text('Progress')),
+            //     ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => report()));
+            //     },
+            //     child: Text('report')),
+            //     ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => sumberdana()));
+            //     },
+            //     child: Text('sumberdana')),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBarWidget(
-        currentIndex: _currentIndex,
-        onTabTapped: (index) {
-          setState(() {
-            _currentIndex = index;
-            if (index == 6) {
-              _logout();
-            }
-          });
-        },
-      ),
+      // bottomNavigationBar: BottomNavigationBarWidget(
+      //   currentIndex: _currentIndex,
+      //   onTabTapped: (index) {
+      //     setState(() {
+      //       _currentIndex = index;
+      //       if (index == 6) {
+      //         _logout();
+      //       }
+      //     });
+      //   },
+      // ),
     );
   }
 
   // ... your existing methods
 
-  void _logout() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
-  }
+  // void _logout() {
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => LoginPage()),
+  //   );
+  // }
 }

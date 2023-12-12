@@ -52,7 +52,13 @@ flutter:
     - lib/assets/logopendarungan.svg
     - lib/assets/open.svg
     - lib/assets/closed.svg
-    - lib/assets/open.svg
+    - lib/assets/homeblack.svg
+    - lib/assets/taskblack.svg
+    - lib/assets/progressblack.svg
+    - lib/assets/reportblack.svg
+    - lib/assets/moneyblack.svg
+    - lib/assets/personblack.svg
+    - lib/assets/logoutblack.svg
     - lib/assets/homewhite.svg
     - lib/assets/logoutwhite.svg
     - lib/assets/personwhite.svg

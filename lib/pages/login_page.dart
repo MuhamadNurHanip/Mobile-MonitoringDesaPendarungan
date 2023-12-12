@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:monitoringdesa_app/pages/home_dashboard.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:monitoringdesa_app/Widgets/BottomNavigationBar.dart';
 // import 'package:monitoringdesa_app/pages/login_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -22,16 +22,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _loginButtonPressed() {
-    // Tambahkan logika untuk proses login di sini (contoh sederhana)
+    // Tambahkan logika untuk proses login di sini 
     String userEmail = _emailController.text;
     String userPassword = _passwordController.text;
 
-    // Verifikasi login (contoh sederhana)
+    // Verifikasi login 
     if (userEmail == "" && userPassword == "") {
       // Jika login berhasil, arahkan pengguna ke halaman home_dashboard.dart
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeDashboard()),
+        MaterialPageRoute(builder: (context) => MainLayout()),
       );
     } else {
       // Jika login gagal, tampilkan pesan kesalahan atau lakukan tindakan lainnya
