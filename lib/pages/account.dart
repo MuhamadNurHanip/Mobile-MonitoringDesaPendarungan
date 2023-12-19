@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
-// import 'package:monitoringdesa_app/pages/login_page.dart';
-// // import 'package:monitoringdesa_app/widgets/BottomNavigationBar.dart';
 
 class account extends StatefulWidget {
   const account({Key? key}) : super(key: key);
@@ -41,24 +39,6 @@ class _accountState extends State<account> {
           
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBarWidget(
-      //   currentIndex: _currentIndex,
-      //   onTabTapped: (index) {
-      //     setState(() {
-      //       _currentIndex = index;
-      //       if (index == 6) {
-      //         _logout();
-      //       }
-      //     });
-      //   },
-      // ),
     );
   }
-
-  // void _logout() {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => LoginPage()),
-  //   );
-  // }
 }

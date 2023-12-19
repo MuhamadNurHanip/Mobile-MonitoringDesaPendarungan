@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
-// import 'package:monitoringdesa_app/pages/login_page.dart';
-// import 'package:monitoringdesa_app/widgets/BottomNavigationBar.dart';
 
 class progress extends StatefulWidget {
   const progress({Key? key}) : super(key: key);
@@ -11,7 +9,6 @@ class progress extends StatefulWidget {
 }
 
 class _progressState extends State<progress> {
-  // int _currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +38,6 @@ class _progressState extends State<progress> {
           
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBarWidget(
-      //   currentIndex: _currentIndex,
-      //   onTabTapped: (index) {
-      //     setState(() {
-      //       _currentIndex = index;
-      //       if (index == 6) {
-      //         _logout();
-      //       }
-      //     });
-      //   },
-      // ),
     );
   }
-
-  // void _logout() {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => LoginPage()),
-  //   );
-  // }
 }

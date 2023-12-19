@@ -39,12 +39,13 @@ class _ProkerState extends State<Proker> {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(right: 30),
               child: Container(
+                alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.white10),
                   borderRadius: BorderRadius.circular(10),
@@ -63,6 +64,7 @@ class _ProkerState extends State<Proker> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(),
@@ -84,7 +86,12 @@ class _ProkerState extends State<Proker> {
                                             10), // Add some space between text and dropdown
                                     // Dropdown button
                                     Container(
-                                      color: Colors.black,
+                                      // width: double.infinity,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
                                       child: DropdownButton<String>(
                                         dropdownColor: Colors.black,
                                         value: selectedYear,
@@ -93,17 +100,37 @@ class _ProkerState extends State<Proker> {
                                             selectedYear = newValue!;
                                           });
                                         },
+                                        underline:
+                                            Container(), 
+                                        icon: Icon(
+                                          Icons.arrow_downward_outlined,
+                                          color: Colors.white,
+                                        ),
                                         items: <String>[
                                           '2023',
                                           '2022',
-                                          '2021', /* Add more years as needed */
+                                          '2021',
+                                          '2020',
+                                          '2019',
+                                          '2018',
+                                          '2017',
+                                          '2016',
+                                          '2015',
+                                          '2014',
+                                          '2013',
+                                          '2012',
+                                          '2011',
+                                          '2010',
+                                          /* Add more years as needed */
                                         ].map<DropdownMenuItem<String>>(
                                             (String value) {
                                           return DropdownMenuItem<String>(
                                             value: value,
-                                            child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.white)),
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
                                           );
                                         }).toList(),
                                       ),

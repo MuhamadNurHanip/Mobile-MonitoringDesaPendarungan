@@ -20,8 +20,10 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Colors.black, // Atur warna latar belakang BottomNavigationBar
-        primaryColor: Colors.white, // Atur warna ikon yang tidak terpilih menjadi putih
+        canvasColor:
+            Colors.black, // Atur warna latar belakang BottomNavigationBar
+        primaryColor:
+            Colors.white, // Atur warna ikon yang tidak terpilih menjadi putih
       ),
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavigationBar(
