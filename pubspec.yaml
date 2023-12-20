@@ -70,11 +70,14 @@ flutter:
     - lib/assets/realisasi.svg
     - lib/assets/jumlah.svg
     - lib/assets/sumber.svg
+    - lib/assets/search.svg
+    - lib/assets/view.svg
     - lib/assets/images/profile.jpeg
     - lib/assets/images/gambardashboard1.jpeg
     - lib/assets/images/gambardashboard2.jpeg
     - lib/assets/images/gambardashboard3.jpeg
     - lib/assets/images/gambarpendarungan.jpeg
+    - lib/assets/images/down-arrow.png
 
   fonts:
     - family: Poppins

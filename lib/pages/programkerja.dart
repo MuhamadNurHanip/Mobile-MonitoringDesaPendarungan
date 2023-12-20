@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Proker extends StatefulWidget {
   Proker({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class Proker extends StatefulWidget {
 
 class _ProkerState extends State<Proker> {
   String selectedYear = "2023";
+  String searchText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,14 +74,14 @@ class _ProkerState extends State<Proker> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(top: 10, left: 20),
+                                padding: EdgeInsets.only(top: 10, left: 10),
                                 child: Row(
                                   children: [
                                     Text(
                                       'Tahun',
                                       style: TextStyle(
                                           fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w200),
                                     ),
                                     SizedBox(
                                         width:
@@ -87,10 +89,11 @@ class _ProkerState extends State<Proker> {
                                     // Dropdown button
                                     Container(
                                       // width: double.infinity,
-                                      height: 50,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                         color: Colors.black,
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(),
                                       ),
                                       child: DropdownButton<String>(
                                         dropdownColor: Colors.black,
@@ -100,12 +103,14 @@ class _ProkerState extends State<Proker> {
                                             selectedYear = newValue!;
                                           });
                                         },
-                                        underline:
-                                            Container(), 
-                                        icon: Icon(
-                                          Icons.arrow_downward_outlined,
+                                        underline: Container(),
+                                        icon: Image.asset(
+                                          'lib/assets/images/down-arrow.png', // Gantilah dengan nama dan ekstensi gambar yang sesuai
+                                          width: 30,
+                                          height: 24,
                                           color: Colors.white,
                                         ),
+                                        // alignment: Alignment.bottomCenter,
                                         items: <String>[
                                           '2023',
                                           '2022',
@@ -133,6 +138,58 @@ class _ProkerState extends State<Proker> {
                                             ),
                                           );
                                         }).toList(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(),
+                                child: Row(
+                                  children: [
+                                    SizedBox(width: 10),
+                                    Container(
+                                      width: 260,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(color: Colors.black),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SvgPicture.asset(
+                                              'lib/assets/search.svg',
+                                              width: 18,
+                                              height: 18,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: TextField(
+                                                cursorWidth: 2,
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                decoration: InputDecoration(
+                                                  hintText:
+                                                      'Cari program kerja',
+                                                  hintStyle: TextStyle(
+                                                      color: Colors.grey),
+                                                  border: InputBorder.none,
+                                                ),
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    searchText = value;
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
