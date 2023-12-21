@@ -19,11 +19,13 @@ class _sumberdana extends State<sumberdana> {
         children: [
           Padding(
             padding: const EdgeInsets.only(),
-            child:
-                tittle(),
+            child: tittle(),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 20,),
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 20,
+            ),
             child: Text(
               'selamat pagi, @admin!',
               style: TextStyle(fontSize: 20),
@@ -36,10 +38,12 @@ class _sumberdana extends State<sumberdana> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
+          SizedBox(
+            height: 15,
+          ),
           
         ],
       ),
     );
   }
-
 }

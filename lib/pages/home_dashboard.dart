@@ -574,7 +574,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 5,
                             )
                           ],
                         ),
