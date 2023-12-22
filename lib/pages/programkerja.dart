@@ -14,17 +14,19 @@ class _ProkerState extends State<Proker> {
   String searchText = '';
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            tittle(),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                top: 20,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        tittle(), // Tempatkan tittle() di sini
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  top: 20,
+                ),
               child: Text(
                 'selamat pagi, @admin!',
                 style: TextStyle(fontSize: 20),
@@ -325,20 +327,6 @@ class _ProkerState extends State<Proker> {
                                           ),
                                         ],
                                       ),
-                                      // DataRow(
-                                      //   cells: [
-
-                                      //   ],
-                                      // ),
-                                      // DataRow(
-                                      //   cells: [
-
-                                      //   ],
-                                      // ),DataRow(
-                                      //   cells: [
-
-                                      //   ],
-                                      // ),
                                     ],
                                   ),
                                 ],
@@ -358,6 +346,7 @@ class _ProkerState extends State<Proker> {
           ],
         ),
       ),
+      ],
     );
   }
 }
