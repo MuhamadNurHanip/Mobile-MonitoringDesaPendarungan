@@ -59,7 +59,7 @@ class _MainLayoutState extends State<MainLayout> {
         body: <Widget>[
           const HomeDashboard(),
           Proker(),
-          const progress(),
+          progress(),
           const report(),
           const sumberdana(),
           const account(),

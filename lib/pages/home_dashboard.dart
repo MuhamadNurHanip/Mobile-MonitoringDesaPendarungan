@@ -28,7 +28,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'selamat pagi, @admin!',
+                      'Selamat pagi, @kepaladesa!',
                       style: TextStyle(fontSize: 20),
                     ),
                     Padding(

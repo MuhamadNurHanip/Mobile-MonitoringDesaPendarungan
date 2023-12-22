@@ -23,9 +23,9 @@ class _ProkerState extends State<Proker> {
             child: ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Text(
-                    'Selamat pagi, @admin!',
+                    'Selamat pagi, @kepaladesa!',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
