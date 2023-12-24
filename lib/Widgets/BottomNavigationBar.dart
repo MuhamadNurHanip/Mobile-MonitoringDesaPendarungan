@@ -60,7 +60,7 @@ class _MainLayoutState extends State<MainLayout> {
           const HomeDashboard(),
           Proker(),
           progress(),
-          const report(),
+          report(),
           const sumberdana(),
           const account(),
         ][currentPageIndex],

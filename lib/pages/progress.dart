@@ -20,7 +20,7 @@ class _progressState extends State<progress> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          tittle(), // App header (tittle) 
+          tittle(), // App header (tittle)
           Expanded(
             child: ListView(
               children: [
@@ -273,10 +273,47 @@ class _progressState extends State<progress> {
                                                 width: 100,
                                                 child: Text('John Doe'),
                                               )),
-                                              DataCell(Container(
-                                                width: 100,
-                                                child: Text('Dana Umum'),
-                                              )),
+                                              DataCell(
+                                                Container(
+                                                  width: 100,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    color: Color.fromARGB(255, 176, 241, 187), // Ganti dengan warna latar belakang yang diinginkan
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25),
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 20,
+                                                          height: 20,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors
+                                                                .green, // Warna hijau di sebelah kiri
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10), // Membuat kontainer menjadi bulat
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 5),
+                                                        Text(
+                                                          'Finish',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .green),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                               DataCell(
                                                 Container(
                                                   width: 100,
@@ -303,10 +340,47 @@ class _progressState extends State<progress> {
                                                 width: 100,
                                                 child: Text('PP'),
                                               )),
-                                              DataCell(Container(
-                                                width: 100,
-                                                child: Text('APBN'),
-                                              )),
+                                              DataCell(
+                                                Container(
+                                                  width: 100,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    color: Color.fromARGB(255, 200, 214, 155), // Ganti dengan warna latar belakang yang diinginkan
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25),
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 20,
+                                                          height: 20,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors
+                                                                .yellow, // Warna hijau di sebelah kiri
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10), // Membuat kontainer menjadi bulat
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 5),
+                                                        Text(
+                                                          'Proses',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .yellow),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                               DataCell(
                                                 Container(
                                                   width: 100,

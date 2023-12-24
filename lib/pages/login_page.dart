@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monitoringdesa_app/Widgets/BottomNavigationBar.dart';
-// import 'package:monitoringdesa_app/pages/login_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:monitoringdesa_app/Models/user_model.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -21,38 +23,79 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  void _loginButtonPressed() {
-    // Tambahkan logika untuk proses login di sini 
-    String userEmail = _emailController.text;
-    String userPassword = _passwordController.text;
+  void _loginButtonPressed() async {
+  // Mengambil data dari controller
+  String userEmail = _emailController.text;
+  String userPassword = _passwordController.text;
 
-    // Verifikasi login 
-    if (userEmail == "" && userPassword == "") {
-      // Jika login berhasil, arahkan pengguna ke halaman home_dashboard.dart
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MainLayout()),
-      );
+  // Membuat objek payload untuk dikirimkan ke API
+  Map<String, dynamic> payload = {
+    "email": userEmail,
+    "password": userPassword,
+  };
+
+  try {
+    // Melakukan pemanggilan API untuk operasi login
+    final response = await http.post(
+      Uri.parse('https://kegiatanpendarungan.id/api/v1/users/'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(payload),
+    );
+
+    // Memeriksa respons dari API
+    if (response.statusCode == 200) {
+      // Parsing data JSON
+      Map<String, dynamic> responseData = json.decode(response.body);
+
+      // Verifikasi login
+      if (responseData['success'] == true) {
+        // Membuat objek User dari data pengguna
+        User user = User.fromJson(responseData['data'][0]); // Sesuaikan dengan struktur respons API Anda
+
+        // Jika login berhasil, arahkan pengguna ke halaman home_dashboard.dart
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainLayout()),
+        );
+      } else {
+        // Jika login gagal, tampilkan pesan kesalahan
+        _showErrorDialog(
+          'Login Gagal',
+          'Email atau password salah. Silakan coba lagi.',
+        );
+      }
     } else {
-      // Jika login gagal, tampilkan pesan kesalahan atau lakukan tindakan lainnya
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Login Gagal'),
-            content: Text('Email atau password salah. Silakan coba lagi.'),
-            actions: <Widget>[
-              TextButton(
-                child: Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
+      // Jika respons API tidak berhasil, tampilkan pesan kesalahan dan status code
+      print('Error Status Code: ${response.statusCode}');
+      print('Error Response: ${response.body}');
+      _showErrorDialog('Error', 'Terjadi kesalahan. Silakan coba lagi.');
     }
+  } catch (e) {
+    // Tangkap error jika terjadi kesalahan dalam pemanggilan API
+    print('Error: $e');
+    _showErrorDialog('Error', 'Terjadi kesalahan. Silakan coba lagi.');
+  }
+}
+
+
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -201,7 +244,6 @@ class _LoginPageState extends State<LoginPage> {
                                     ? 'lib/assets/open.svg' // Ganti dengan path file SVG mata terbuka
                                     : 'lib/assets/closed.svg', // Ganti dengan path file SVG mata tertutup
                                 color: Colors.grey,
-                
                               ),
                             ),
                           ),
