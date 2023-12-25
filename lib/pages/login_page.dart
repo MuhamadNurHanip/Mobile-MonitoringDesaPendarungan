@@ -4,9 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monitoringdesa_app/Widgets/BottomNavigationBar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-// import 'dart:convert';
-// import 'package:crypto/crypto.dart';
-// import 'package:monitoringdesa_app/Models/user_model.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});

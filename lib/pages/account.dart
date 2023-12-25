@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monitoringdesa_app/Widgets/AppHeader.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class account extends StatefulWidget {
   const account({Key? key}) : super(key: key);
@@ -9,7 +11,28 @@ class account extends StatefulWidget {
 }
 
 class _account extends State<account> {
-  // int _currentIndex = 1;
+  late List<Map<String, dynamic>> userData;
+
+  @override
+  void initState() {
+    super.initState();
+    userData = [];
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    final response = await http
+        .get(Uri.parse('https://kegiatanpendarungan.id/api/v1/users'));
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(response.body);
+      setState(() {
+        userData = List<Map<String, dynamic>>.from(data['data']);
+      });
+    } else {
+      throw Exception('Failed to load user data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +50,33 @@ class _account extends State<account> {
             padding: const EdgeInsets.only(
               left: 20,
               top: 15,
-              // bottom:
             ),
-            child: Text(
-              'Selamat pagi, @kepaladesa!',
-              style: TextStyle(fontSize: 20),
+            child: Builder(
+              builder: (context) {
+                print('userData: $userData');
+                if (userData.isNotEmpty) {
+                  print('User data is not empty');
+                  print(
+                    'UserData Roles: ${userData.map((user) => user['roleuser'])}',
+                  );
+                  if (userData
+                      .any((user) => user['roleuser'] == 'kepaladesa')) {
+                    print('User has role kepaladesa');
+                    return Text(
+                      'Selamat pagi, @${userData[0]['fullname']}!',
+                      style: TextStyle(fontSize: 20),
+                    );
+                  } else {
+                    print('User role is not kepaladesa');
+                  }
+                } else {
+                  print('User data is empty');
+                }
+                return Text(
+                  'Selamat pagi!',
+                  style: TextStyle(fontSize: 20),
+                );
+              },
             ),
           ),
           Padding(
@@ -49,137 +94,84 @@ class _account extends State<account> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 30, right: 30, bottom: 30),
-                                child: Container(
-                                  height: 260,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white10),
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 8,
-                                        offset: Offset(0, 5),
-                                        spreadRadius: 0,
+                      children: List.generate(userData.length, (index) {
+                        final user = userData[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              top: 30, right: 30, bottom: 30),
+                          child: Container(
+                            height: 170,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white10),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 8,
+                                  offset: Offset(0, 5),
+                                  spreadRadius: 0,
+                                ),
+                              ],
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20, left: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Accounts',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 23,
+                                  ),
+                                  Row(
+                                    children: [
+                                      ClipOval(
+                                        child: Container(
+                                          width: 60,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.asset(
+                                            'lib/assets/images/profile.jpeg',
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              user['fullname'],
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            Text(
+                                              user['roleuser'],
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
-                                    color: Colors.white,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 20, left: 20),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Accounts',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(
-                                          height: 23,
-                                        ),
-                                        Row(
-                                          children: [
-                                            ClipOval(
-                                              child: Container(
-                                                width: 60,
-                                                height: 60,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Image.asset(
-                                                  'lib/assets/images/profile.jpeg',
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 20),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'admin',
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                  Text(
-                                                    'Admin',
-                                                    style: TextStyle(
-                                                        color: Colors.grey),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        Row(
-                                          children: [
-                                            ClipOval(
-                                              child: Container(
-                                                width: 60,
-                                                height: 60,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Image.asset(
-                                                  'lib/assets/images/profile.jpeg',
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 20),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'kepaladesa',
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                  Text(
-                                                    'Kepala Desa',
-                                                    style: TextStyle(
-                                                        color: Colors.grey),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                ],
                               ),
                             ),
-                            SizedBox(
-                              height: 20,
-                            )
-                          ],
-                        ),
-                      ],
+                          ),
+                        );
+                      }),
                     ),
                   ],
                 ),
