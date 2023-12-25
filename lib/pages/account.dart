@@ -28,6 +28,21 @@ class _account extends State<account> {
       final Map<String, dynamic> data = json.decode(response.body);
       setState(() {
         userData = List<Map<String, dynamic>>.from(data['data']);
+
+        // Periksa apakah ada user dengan role "pejabatdesa"
+        bool isPejabatDesa =
+            userData.any((user) => user['roleuser'] == 'pejabatdesa');
+        String userName = isPejabatDesa
+            ? userData.firstWhere((user) => user['roleuser'] == 'pejabatdesa',
+                orElse: () => {'fullname': ''})['fullname']
+            : '';
+
+        if (isPejabatDesa) {
+          print('User has role pejabatdesa');
+          print('Selamat pagi, @$userName!');
+        } else {
+          print('User role is not pejabatdesa');
+        }
       });
     } else {
       throw Exception('Failed to load user data');
@@ -57,17 +72,25 @@ class _account extends State<account> {
                 if (userData.isNotEmpty) {
                   print('User data is not empty');
                   print(
-                    'UserData Roles: ${userData.map((user) => user['roleuser'])}',
-                  );
-                  if (userData
-                      .any((user) => user['roleuser'] == 'kepaladesa')) {
-                    print('User has role kepaladesa');
+                      'UserData Roles: ${userData.map((user) => user['roleuser'])}');
+
+                  // Variabel untuk memudahkan akses
+                  bool isPejabatDesa = userData
+                          .any((user) => user['roleuser'] == 'pejabatdesa') ??
+                      false;
+                  String userName = isPejabatDesa
+                      ? userData.firstWhere((user) =>
+                          user['roleuser'] == 'pejabatdesa')['fullname']
+                      : (userData.isNotEmpty ? userData[0]['fullname'] : '');
+
+                  if (isPejabatDesa) {
+                    print('User has role pejabatdesa');
                     return Text(
-                      'Selamat pagi, @${userData[0]['fullname']}!',
+                      'Selamat pagi, ${isPejabatDesa ? '@$userName' : ''}!',
                       style: TextStyle(fontSize: 20),
                     );
                   } else {
-                    print('User role is not kepaladesa');
+                    print('User role is not pejabatdesa');
                   }
                 } else {
                   print('User data is empty');
