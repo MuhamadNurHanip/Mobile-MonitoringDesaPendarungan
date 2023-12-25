@@ -74,7 +74,6 @@ class _account extends State<account> {
                   print(
                       'UserData Roles: ${userData.map((user) => user['roleuser'])}');
 
-                  // Variabel untuk memudahkan akses
                   bool isPejabatDesa = userData
                           .any((user) => user['roleuser'] == 'pejabatdesa') ??
                       false;
