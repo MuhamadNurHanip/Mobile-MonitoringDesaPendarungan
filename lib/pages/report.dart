@@ -76,6 +76,59 @@ class _reportState extends State<report> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 11,
+                                            left: 8,
+                                            right: 0,
+                                            bottom: 0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Back-Up',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w300),
+                                            ),
+                                            SizedBox(width: 10),
+                                            // Export Data Button
+                                            Container(
+                                              width:
+                                                  130, // Sesuaikan dengan lebar yang diinginkan
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  // Implement your export data logic here
+                                                  print(
+                                                      'Export Data Button Pressed');
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: Colors
+                                                      .black, // Ganti warna tombol sesuai kebutuhan
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                  minimumSize:
+                                                      Size(double.infinity, 5),
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 8),
+                                                ),
+                                                child: Text(
+                                                  'Export Data',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    // fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          width: 0,
+                                          ),
+                                      Padding(
                                         padding:
                                             EdgeInsets.only(top: 10, left: 10),
                                         child: Row(
@@ -160,7 +213,9 @@ class _reportState extends State<report> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(),
+                                      SizedBox(
+                                          // width: 10,
+                                          ),
                                       Padding(
                                         padding:
                                             EdgeInsets.only(top: 10, left: 10),
@@ -232,7 +287,6 @@ class _reportState extends State<report> {
                                         ),
                                       ),
                                       SizedBox(),
-                                      
                                       DataTable(
                                         columns: [
                                           DataColumn(
@@ -265,6 +319,55 @@ class _reportState extends State<report> {
                                           ),
                                           DataColumn(
                                             label: Text(
+                                              'Rencana Anggaran',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Realisasi Anggaran',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Sisa Dana',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Status',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Deskripsi',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Hambatan',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
+                                              'Evaluasi',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          DataColumn(
+                                            label: Text(
                                               'Aksi',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold),
@@ -289,6 +392,71 @@ class _reportState extends State<report> {
                                               DataCell(Container(
                                                 width: 100,
                                                 child: Text('Dana Umum'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Rencana 1'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Realisasi 1'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Sisa 1'),
+                                              )),
+                                              DataCell(
+                                                Container(
+                                                  width: 100,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    color: Color.fromARGB(
+                                                        255, 176, 241, 187),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25),
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 20,
+                                                          height: 20,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.green,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 5),
+                                                        Text(
+                                                          'Finish',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.green),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Deskripsi 1'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Hambatan 1'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Evaluasi 1'),
                                               )),
                                               DataCell(
                                                 Container(
@@ -323,6 +491,72 @@ class _reportState extends State<report> {
                                               DataCell(Container(
                                                 width: 100,
                                                 child: Text('APBN'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Rencana 2'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Realisasi 2'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Sisa 2'),
+                                              )),
+                                              DataCell(
+                                                Container(
+                                                  width: 100,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    color: Color.fromARGB(
+                                                        255, 200, 214, 155),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25),
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 20,
+                                                          height: 20,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color:
+                                                                Colors.yellow,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 5),
+                                                        Text(
+                                                          'Proses',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .yellow),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Deskripsi 2'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Hambatan 2'),
+                                              )),
+                                              DataCell(Container(
+                                                width: 100,
+                                                child: Text('Evaluasi 2'),
                                               )),
                                               DataCell(
                                                 Container(
